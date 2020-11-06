@@ -5,7 +5,7 @@
 import sys
 import random
 from Position import Position
-from State import State
+import State
 
 # all the pieces
 wPawn = 0
@@ -84,7 +84,7 @@ def getProblemInstance(n, p, seed, agent):
                 board[pos.row][pos.col] = piece
 
     # Creating the instance, i.e., the state
-    return State(board, agentPos, agent)
+    return State.State(board, agentPos, agent)
 
 
 #

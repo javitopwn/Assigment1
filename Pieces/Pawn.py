@@ -4,7 +4,7 @@ from Piece import Piece
 from Action import Action
 
 # this class implements the getPossibleActions for each type of piece
-
+#Pawn, Rook, Bishop, Knight, Queen, King
 class Pawn(Piece): 
 	
 	# constructor

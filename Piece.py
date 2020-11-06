@@ -98,8 +98,47 @@ class Piece:
 						l.append(action)
 		
 		return l
-			
-			
-	
+
+		# vertical down moves
+	def getDiagonalLeftToRightMoves(self, state):
+		l = []
+		agentColor = self.m_color
+		row0, col0 = state.m_agentPos.row, state.m_agentPos.col;
+
+		busyCell = False
+		for r in range(-row0, state.m_boardSize-row0):
+			for c in range(-col0 , state.m_boardSize):
+				if not busyCell:
+					if state.m_board[row0+r][col0+c] == Utils.empty:  # add action
+						action = Action(state.m_agentPos, Position(r, col0))
+						l.append(action)
+					else:
+						busyCell = True
+						if agentColor != Utils.getColorPiece(state.m_board[r][col0]):  # capture piece
+							action = Action(state.m_agentPos, Position(r, col0))
+							l.append(action)
+
+		return l
+
+
+	def getDiagonalRightToLeftMoves(self, state):
+		l = []
+		agentColor = self.m_color
+		row0, col0 = state.m_agentPos.row, state.m_agentPos.col;
+		i = 0
+		busyCell = False
+		for r in range(state.m_boardSize):
+			for c in range(state.m_boardSize):
+				if state.m_board[r][c] == Utils.empty:  # add action
+					action = Action(state.m_agentPos, Position(r, col0))
+					l.append(action)
+				else:
+					busyCell = True
+					if agentColor != Utils.getColorPiece(state.m_board[r][col0]):  # capture piece
+						action = Action(state.m_agentPos, Position(r, col0))
+						l.append(action)
+
+		return l
+
 
 	
